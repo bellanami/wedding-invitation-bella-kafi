@@ -4,15 +4,10 @@
  */
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { MapPin, Calendar, Clock, Send } from "lucide-react";
-import { useState, useRef } from "react";
+import { MapPin, Clock } from "lucide-react";
+import { useRef } from "react";
 
 export default function App() {
-  const [formData, setFormData] = useState({
-    name: "",
-    status: ""
-  });
-
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -226,60 +221,6 @@ export default function App() {
           </p>
           <p className="tracking-widest text-sage-300 uppercase text-sm">Adz-Dzariyyat: 49</p>
         </motion.div>
-      </section>
-
-      {/* RSVP Section */}
-      <section className="py-24 px-6 max-w-xl mx-auto">
-        <motion.div {...fadeIn} className="text-center mb-12">
-          <h2 className="font-serif text-4xl text-sage-900 mb-4 italic">Kehadiran</h2>
-          <p className="text-sage-600">Mohon konfirmasi kehadiran Anda melalui form di bawah ini.</p>
-        </motion.div>
-
-        <motion.form 
-          {...fadeIn}
-          className="space-y-6"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <div>
-            <label className="block text-sm font-bold text-sage-800 mb-2">Nama</label>
-            <input 
-              type="text" 
-              placeholder="Masukkan nama"
-              className="w-full p-4 rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-sage-500 transition-all bg-white"
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-bold text-sage-800 mb-2">Konfirmasi Kehadiran</label>
-            <div className="grid grid-cols-2 gap-4">
-              <button 
-                type="button"
-                onClick={() => setFormData({...formData, status: "hadir"})}
-                className={`p-4 rounded-xl border transition-all font-medium ${formData.status === "hadir" ? "bg-sage-600 text-white border-sage-600" : "bg-white text-sage-700 border-sage-200 hover:border-sage-400"}`}
-              >
-                Hadir
-              </button>
-              <button 
-                type="button"
-                onClick={() => setFormData({...formData, status: "tidak_hadir"})}
-                className={`p-4 rounded-xl border transition-all font-medium ${formData.status === "tidak_hadir" ? "bg-sage-600 text-white border-sage-600" : "bg-white text-sage-700 border-sage-200 hover:border-sage-400"}`}
-              >
-                Tidak Hadir
-              </button>
-            </div>
-          </div>
-
-          <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full bg-sage-800 text-white p-4 rounded-xl font-bold shadow-lg hover:bg-sage-900 transition-all flex items-center justify-center gap-2"
-          >
-            <Send size={18} />
-            Kirim
-          </motion.button>
-        </motion.form>
       </section>
 
       {/* Footer */}
